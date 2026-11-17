@@ -1,6 +1,6 @@
 # Fabric Tear Lab · 丝袜布料实验室
 
-[在线体验](https://fabric-tear-lab.netlify.app/) · [v0.1.0](https://github.com/MartinDelophy/fabric-tear-lab/tree/v0.1.0)
+[在线体验](https://fabric-tear-lab.netlify.app/) · [v0.1.1](https://github.com/MartinDelophy/fabric-tear-lab/tree/v0.1.1)
 
 同一套网页适配电脑和手机，复现参考站的 3D 布料拉扯与泼水实验。桌面端显示右侧参数面板，手机端在顶部提供快捷工具，展开后从底部调节参数。
 
@@ -26,6 +26,12 @@ npm start
 - **布料**：从袜面按住向外拖动，观察拉伸和破口。可调颜色、厚度、弹性、韧性，并重置布料。
 - **泼水**：切换模式后点按袜面。可调液体颜色、透明度、用量、黏度等；使用「清除水分」回到干燥状态。
 - **镜头**：PC 用鼠标滚轮缩放；H5 界面支持双指缩放和平移。顶部可切换中英文。
+
+## 相关项目 · 雨丝 2.0
+
+雨丝 2.0（Wet Denier Lab）是适配电脑和手机的 3D 泼水互动实验。点按模型可以泼水，按住拖动可以连续浇水。还可以切换影棚、浴室、夜雨街头和泳池边，在「衣橱」里调整姿势、袜款、材质和花纹。
+
+[雨丝 2.0 的 GitHub 仓库](https://github.com/MartinDelophy/yusi-wet-denier-lab) · [在线体验](https://yusi-wet-denier-lab.netlify.app/)
 
 ## 编辑与构建
 

@@ -1,66 +1,17 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="交互式 3D 布料实验，观察拉伸、撕裂与水分渗透。">
-  <meta name="theme-color" content="#102022">
-  <title>布料实验室 · Fabric Tear Lab</title>
-</head>
-<body>
-  <main class="lab">
-    <header class="masthead">
-      <a class="wordmark" href="./" aria-label="Fabric Tear Lab 首页">
-        <span class="mark" aria-hidden="true"></span><span>FABRIC TEAR LAB</span>
-      </a>
-      <a class="source" href="https://github.com/MartinDelophy/fabric-tear-lab" aria-label="在 GitHub 查看源代码">GitHub ↗</a>
-    </header>
-    <div class="heading">
-      <h1>布料实验室</h1>
-      <p>拉伸、撕裂与水分渗透的 3D 沙盒。</p>
-    </div>
-    <div class="workspace">
-      <section class="stage" aria-label="3D 布料样片">
-        <canvas id="scene" aria-label="拖拽或点击布料样片"></canvas>
-        <div class="stage-top">
-          <span class="status" id="scene-status" role="status"><i></i><span id="status-text">正在准备样片</span></span>
-          <div class="zoom" aria-label="视图操作">
-            <button type="button" id="zoom-out" aria-label="缩小">−</button>
-            <button type="button" id="zoom-in" aria-label="放大">+</button>
-            <button type="button" id="view-reset" aria-label="重置视图">复位</button>
-          </div>
-        </div>
-        <p class="stage-hint" id="stage-hint">拖拽样片 · 滚轮或双指缩放</p>
-      </section>
-      <section class="controls" aria-labelledby="controls-title">
-        <div class="controls-heading"><h2 id="controls-title">试验设置</h2></div>
-        <div class="segments" role="group" aria-label="试验模式">
-          <button type="button" data-mode="fabric" aria-pressed="true">拉扯布料</button>
-          <button type="button" data-mode="water" aria-pressed="false">泼水测试</button>
-        </div>
-        <div class="setting-group">
-          <p class="label" id="color-label">样片颜色</p>
-          <div class="swatches" role="group" aria-labelledby="color-label">
-            <button type="button" style="--swatch:#62b9a8" data-color="#62b9a8" aria-label="薄荷绿" aria-pressed="true"></button>
-            <button type="button" style="--swatch:#7f9bdc" data-color="#7f9bdc" aria-label="矢车菊蓝" aria-pressed="false"></button>
-            <button type="button" style="--swatch:#dc8e79" data-color="#dc8e79" aria-label="珊瑚色" aria-pressed="false"></button>
-            <button type="button" style="--swatch:#e6d8ad" data-color="#e6d8ad" aria-label="帆布米色" aria-pressed="false"></button>
-          </div>
-        </div>
-        <div class="setting-group sliders" id="fabric-settings">
-          <label><span>弹性回复 <output for="stiffness"></output></span><input id="stiffness" type="range" data-setting="stiffness" min="0" max="100" value="72" data-unit="%"></label>
-          <label><span>断裂阈值 <output for="tear"></output></span><input id="tear" type="range" data-setting="tearThreshold" min="1.12" max="1.9" value="1.38" step=".01" data-unit="×"></label>
-        </div>
-        <div class="setting-group sliders" id="water-settings" hidden>
-          <label><span>单次水量 <output for="water"></output></span><input id="water" type="range" data-setting="waterAmount" min="0" max="100" value="65" data-unit="%"></label>
-        </div>
-        <div class="setting-group sliders">
-          <label><span>布料不透明度 <output for="opacity"></output></span><input id="opacity" type="range" data-setting="opacity" min="20" max="100" value="100" data-unit="%"></label>
-        </div>
-        <button class="reset" id="reset" type="button">重置样片</button>
-      </section>
-    </div>
-  </main>
-  <script type="module" src="/main.js"></script>
-</body>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover" />
+    <title>丝袜布料实验室</title>
+    <link rel="preload" as="fetch" crossorigin="anonymous" href="./releases/04e93fd92fb490b0/models/rio/stockings.json" />
+    <link rel="preload" as="fetch" crossorigin="anonymous" href="./releases/04e93fd92fb490b0/models/rio/Rio_Uniform_Free_v1.0.pmx" />
+    <link rel="stylesheet" href="./src/styles.css" />
+    <script type="module" src="./src/main.js"></script>
+    <link rel="preload" as="image" crossorigin="anonymous" fetchpriority="low" href="./releases/04e93fd92fb490b0/models/rio/textures/ClothUV_Base_color.png.webp" />
+    <link rel="preload" as="image" crossorigin="anonymous" fetchpriority="low" href="./releases/04e93fd92fb490b0/models/rio/sph/mc3.png.webp" />
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>

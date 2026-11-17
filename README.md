@@ -1,32 +1,30 @@
-# Fabric Tear Lab · 布料实验室
+# 丝袜布料实验室 · PC / H5
 
-在浏览器里用鼠标或触屏拉扯一块 3D 布料，观察网格变形、断裂和水分扩散。桌面和移动设备使用同一套控制参数。
+同一套网页适配电脑和手机，复现参考站的 3D 布料拉扯与泼水实验。桌面端显示右侧参数面板，手机端在顶部提供快捷工具，展开后从底部调节参数。
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2FMartinDelophy%2Ffabric-tear-lab)
+## 在本地运行
 
-## 预览
+使用 Node.js 22 或更新版本。从解压后的项目目录执行：
 
-| 桌面 | 手机 |
-| --- | --- |
-| ![桌面版布料实验室](preview-desktop.jpg) | <img src="preview-mobile.jpg" alt="移动版布料实验室" width="270"> |
+```sh
+npm run assets
+npm start
+```
+
+打开 [http://127.0.0.1:4173/](http://127.0.0.1:4173/)。首次运行 `assets` 需要联网，脚本会从参考站获取并校验指定版本的模型、网格、贴图和音频；资源保存后，预览不需要联网，也不需要安装 npm 依赖。如果使用已经准备好资源的本机项目，可以直接运行 `npm start`。端口占用时可用 `npm start -- --port 4183`。
 
 ## 操作
 
-- **拉扯布料**：按住并拖动样片。拉伸超过阈值时，布料会撕裂。点击「重置样片」恢复。
-- **泼水测试**：点击布料，观察水滴和湿痕。调整单次水量，或点击「清除水分」。
-- **缩放视图**：滚轮、双指或场景右上角按钮均可缩放。
+- **布料**：从袜面按住向外拖动，观察拉伸和破口。可调颜色、厚度、弹性、韧性，并重置布料。
+- **泼水**：切换模式后点按袜面。可调液体颜色、透明度、用量、黏度等；使用「清除水分」回到干燥状态。
+- **镜头**：PC 用鼠标滚轮缩放；H5 界面支持双指缩放和平移。顶部可切换中英文。
 
-## 本地运行
+## 编辑与构建
 
-使用 Node.js 22 或更新版本。
+- `src/main.js`：参数、响应式工具栏和应用状态。
+- `src/styles.css`：桌面与手机布局。
+- `src/runtime.js`：参考站前端运行包里的 3D 渲染与仿真部分，保留运行逻辑。
 
-```sh
-npm ci
-npm run dev
-```
+需要 Vite 热更新或构建时，运行 `npm ci`，然后执行 `npm run dev` 或 `npm run build`。静态构建在 `dist/client/`；带模型的本地构建应按素材许可使用。
 
-`npm run build` 生成 `dist/`。从 GitHub 将仓库导入 Netlify 时，`netlify.toml` 会配置构建命令和发布目录。
-
-## 许可
-
-本仓库的应用代码和生成的演示素材采用 [MIT 许可](LICENSE)。布料、支架、织纹和水滴均由代码生成。[Three.js](https://github.com/mrdoob/three.js) 作为布料场景的渲染依赖，使用其自身的 MIT 许可。
+参考：[原站](https://fabric-tear.vercel.app/) · 模型：[MissQing / 调月莉音](https://booth.pm/en/items/6727723)。原作者禁止模型用于商业用途或再分发；源码 ZIP 因此不内置第三方模型和关联资源。

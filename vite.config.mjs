@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   base: "./",
+  publicDir: process.env.NETLIFY === "true" ? false : "public",
   build: {
     outDir: "dist/client",
   },

@@ -1,6 +1,17 @@
 [build]
-  command = "node scripts/prepare-assets.mjs --verify-only && npm run build"
+  command = "npm run build"
   publish = "dist/client"
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Let the browser fetch the third-party assets directly from their source.
+[[redirects]]
+  from = "/releases/04e93fd92fb490b0/models/rio/Rio_Uniform_Free_v1.0.pmx"
+  to = "https://fabric-tear.vercel.app/releases/04e93fd92fb490b0/models/rio/Rio_Uniform_Free_v1.0.pmx.gz"
+  status = 302
+
+[[redirects]]
+  from = "/releases/04e93fd92fb490b0/*"
+  to = "https://fabric-tear.vercel.app/releases/04e93fd92fb490b0/:splat"
+  status = 302

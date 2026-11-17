@@ -1,12 +1,18 @@
-# 丝袜布料实验室 · PC / H5
+# Fabric Tear Lab · 丝袜布料实验室
+
+[在线体验](https://fabric-tear-lab.netlify.app/) · [v0.1.0](https://github.com/MartinDelophy/fabric-tear-lab/tree/v0.1.0)
 
 同一套网页适配电脑和手机，复现参考站的 3D 布料拉扯与泼水实验。桌面端显示右侧参数面板，手机端在顶部提供快捷工具，展开后从底部调节参数。
 
-[在线体验](https://fabric-tear-lab.netlify.app/)需要联网加载原站的模型、贴图和音频。
+| 电脑 · 布料模式 | 手机 · 快捷工具栏 |
+| :---: | :---: |
+| <img src="docs/preview-desktop.jpg" alt="桌面版的 3D 袜面和右侧布料参数面板" width="560"> | <img src="docs/preview-mobile.jpg" alt="手机版的 3D 袜面和顶部快捷工具栏" width="170"> |
+
+线上版由 Netlify 从 `fabric-tear-4183` 分支部署。浏览器从原站加载模型、贴图和音频。
 
 ## 在本地运行
 
-使用 Node.js 22 或更新版本。从解压后的项目目录执行：
+使用 Node.js 22 或更新版本。在项目目录执行：
 
 ```sh
 npm run assets

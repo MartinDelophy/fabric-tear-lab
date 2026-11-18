@@ -1,5 +1,5 @@
 /* Responsive controls, application state and browser viewport integration. */
-import { jsxRuntime, React, ReactDOM, LanguageProvider, useLanguage, releaseAsset, defaultLiquidParams, defaultFabricParams, liquidVolumeToSlider, sliderToLiquidVolume, normalizeLiquidParams, defaultIdleMotion, idleMotionNames, SimulationScene } from './runtime.js';
+import { jsxRuntime, React, ReactDOM, LanguageProvider, useLanguage, releaseAsset, defaultLiquidParams, defaultFabricParams, liquidVolumeToSlider, sliderToLiquidVolume, normalizeLiquidParams, defaultIdleMotion, idleMotionNames, SimulationScene, ModelLoading } from './runtime.js';
 const fabricDefaults = {
     denier: .75,
     stiffness: .5,
@@ -524,9 +524,6 @@ function bindVisualViewport() {
   };
 }
 function FabricTearApp() {
-  const {
-    t: o
-  } = useLanguage();
   React.useEffect(bindVisualViewport, []);
   const [t, e] = React.useState(null),
     [n, s] = React.useState(RN),
@@ -542,7 +539,10 @@ function FabricTearApp() {
     fetch(releaseAsset("models/rio/stockings.json")).then(C => {
       if (!C.ok) throw new Error("莉音连裤袜加载失败");
       return C.json();
-    }).then(e).catch(C => A(String(C)));
+    }).then(e).catch(error => {
+      console.error("Rio cloth data could not load", error);
+      A("莉音连裤袜加载失败");
+    });
   }, []), jsxRuntime.jsxs(jsxRuntime.Fragment, {
     children: [t ? jsxRuntime.jsx(SimulationScene, {
       interactionMode: r,
@@ -556,9 +556,9 @@ function FabricTearApp() {
       quality: y,
       params: n,
       resetKey: S
-    }) : jsxRuntime.jsx("div", {
-      className: "loading",
-      children: o(w ?? "加载莉音模型…")
+    }) : jsxRuntime.jsx(ModelLoading, {
+      failed: Boolean(w),
+      message: w ?? "加载莉音模型…"
     }), jsxRuntime.jsx(ControlPanel, {
       interactionMode: r,
       onInteractionMode: l,
